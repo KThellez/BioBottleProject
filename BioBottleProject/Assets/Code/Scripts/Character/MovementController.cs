@@ -13,7 +13,7 @@ public class CharacterController : MonoBehaviour
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    [SerializeField] private bool isGrounded;
     private bool isCrouching;
 
     private void Start()

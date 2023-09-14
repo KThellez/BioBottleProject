@@ -9,8 +9,9 @@ public class Shot : MonoBehaviour
 
     private void Start()
     {
-        shotRb = GetComponent<Rigidbody2D>();
-        shotRb.velocity = Vector2.right * shotSpeed;
+        if (shotRb == null){shotRb = GetComponent<Rigidbody2D>();}
+
+        //shotRb.velocity = shotRb.velocity.normalized * shotSpeed;
     }
 
     private void OnCollisionEnter2D()

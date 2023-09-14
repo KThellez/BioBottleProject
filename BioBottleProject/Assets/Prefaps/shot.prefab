@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7323472309327451039}
   - component: {fileID: 7765766863775469073}
   - component: {fileID: 8716661490671944240}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762df0141a27de2488acd78f09170d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 5
   shotRb: {fileID: 7765766863775469073}
 --- !u!50 &7765766863775469073
 Rigidbody2D:

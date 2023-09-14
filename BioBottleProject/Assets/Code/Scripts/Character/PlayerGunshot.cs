@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerGunshot : MonoBehaviour
 {
+    [SerializeField] private float shotSpeed = 10.0f;
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -24,10 +25,11 @@ public class PlayerGunshot : MonoBehaviour
             {
 
                 shot.transform.position = shotStartPosition; // Establece la posición inicial de la bala
-
-
                 Rigidbody2D shotRb = shot.GetComponent<Rigidbody2D>(); // Configura la dirección del proyectil
-                shotRb.velocity = direction * shotRb.velocity.magnitude; // Mantiene la velocidad original
+                //shotRb.velocity = direction * shotRb.velocity.magnitude * shotSpeed; // Mantiene la velocidad original
+                
+                shotRb.velocity = direction * shotSpeed; 
+                
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Ajusta la rotación de la bala para que apunte hacia el mouse
                 shot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); //Dispara.
 

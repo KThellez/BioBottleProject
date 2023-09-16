@@ -38,8 +38,6 @@ public class PlayerGunshot : MonoBehaviour
             }
 
 
-
-
             /*
             GameObject shots = GunShotsPlayer.Instance.RequestShot();
             shots.transform.position = transform.position + new Vector3(1,0,0);

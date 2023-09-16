@@ -17,7 +17,7 @@ public class PlayerGunshot : MonoBehaviour
 
             float shotDistance = 2.0f; // Ajusta la distancia desde el personaje al punto de inicio del proyectil
 
-            Vector3 shotStartPosition = transform.position + direction * shotDistance; // Calcula la posición de inicio del proyectil
+            Vector3 shotStartPosition = transform.position +  new Vector3(0, 0.5f, 0) + direction * shotDistance; // Calcula la posición de inicio del proyectil
 
             GameObject shot = GunShotsPlayer.Instance.RequestShot(); // Solicita una bala del pool
 

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 
 public class CharacterController : MonoBehaviour
 {
@@ -14,7 +10,9 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody2D rb;
     [SerializeField] private bool isGrounded;
-    private bool isCrouching;
+    private bool isJumping;
+
+    private Animator playerAnimator;
 
     private void Start()
     {
@@ -23,33 +21,23 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
+        isJumping = false;
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer); //Comprueba si el character esta en el suelo
 
         float horizontalMovementInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2 (horizontalMovementInput * speed, rb.velocity.y);
 
+        playerAnimator.SetFloat("Movement", horizontalMovementInput);
 
         //Comprobación del Salto
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.AddForce (Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isJumping = true;
         }
 
-
-        
-        //Agacharse
-        if (Input.GetButtonDown("Crouch"))
-        {
-            isCrouching = true;
-            Debug.Log("I'm crouched");
-        }
-        else if (Input.GetButtonUp("Crouch"))
-        {
-            isCrouching = false; //Volver al tamaño Orginal
-            Debug.Log("I'm not crouched");
-        }
-
-
-
+        if (isJumping == true)
+            playerAnimator.SetTrigger("Jump");
     }
 }

@@ -21,23 +21,22 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        isJumping = false;
+        
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer); //Comprueba si el character esta en el suelo
 
         float horizontalMovementInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2 (horizontalMovementInput * speed, rb.velocity.y);
 
-        playerAnimator.SetFloat("Movement", horizontalMovementInput);
+        
 
         //Comprobación del Salto
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.AddForce (Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isJumping = true;
+            
         }
 
-        if (isJumping == true)
-            playerAnimator.SetTrigger("Jump");
+        
     }
 }

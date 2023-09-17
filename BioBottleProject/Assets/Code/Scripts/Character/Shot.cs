@@ -23,11 +23,17 @@ public class Shot : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Colisiono");
+        if (collision.CompareTag("Boss"))
+        {
+            Debug.Log("GOLPEO AL Boss");
+            Debug.Log(collision.GetComponent<Boss>());
+            collision.GetComponent<Boss>().TakeDamage(damage);
+        }
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("GOLPEO AL ENEMIGO");
-            Debug.Log(collision.GetComponent<Boss>());
-            collision.GetComponent<Boss>().TakeDamage(damage);
+            collision.GetComponent<Enemy>().death();
+            gameObject.SetActive(false);
         }
     }
 }

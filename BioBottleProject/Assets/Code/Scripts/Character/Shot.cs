@@ -6,6 +6,7 @@ public class Shot : MonoBehaviour
 {
     //[SerializeField] private float shotSpeed = 10.0f;
     [SerializeField] private Rigidbody2D shotRb;
+    [SerializeField] private float damage;
 
     private void Start()
     {
@@ -16,5 +17,17 @@ public class Shot : MonoBehaviour
     private void OnCollisionEnter2D()
     {
         gameObject.SetActive(false);
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Colisiono");
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log("GOLPEO AL ENEMIGO");
+            Debug.Log(collision.GetComponent<Boss>());
+            collision.GetComponent<Boss>().TakeDamage(damage);
+        }
     }
 }

@@ -1445,7 +1445,7 @@ RectTransform:
   m_GameObject: {fileID: 1615637231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.49997, y: 0.36253, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1373922334}
@@ -1454,7 +1454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 1200, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1615637233
@@ -1469,6 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c7755f6e7747145bb70391b9a97e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 1615637234}
 --- !u!114 &1615637234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4436,7 +4437,7 @@ Transform:
   m_GameObject: {fileID: 1989195571}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.552715, y: -1.7877433, z: -10}
+  m_LocalPosition: {x: 10.54919, y: -1.7874913, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4572,6 +4573,7 @@ GameObject:
   - component: {fileID: 2006696261}
   - component: {fileID: 2006696260}
   - component: {fileID: 2006696259}
+  - component: {fileID: 2006696265}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -4657,7 +4659,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.8, y: -1.0358055}
+  m_Offset: {x: -2.7331333, y: -0.42842984}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4668,7 +4670,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5999999, y: 3.5}
+  m_Size: {x: 0.9759083, y: 2.1292253}
   m_EdgeRadius: 0
 --- !u!95 &2006696262
 Animator:
@@ -4759,6 +4761,41 @@ Transform:
   - {fileID: 1025309333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &2006696265
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006696258}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.625791, y: -0.57186794}
+  m_Size: {x: 0.85208035, y: 2.5012445}
+  m_Direction: 0
 --- !u!1 &2045654837
 GameObject:
   m_ObjectHideFlags: 0

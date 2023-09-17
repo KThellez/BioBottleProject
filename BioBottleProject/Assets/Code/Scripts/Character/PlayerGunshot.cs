@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerGunshot : MonoBehaviour
 {
     [SerializeField] private float shotSpeed = 10.0f;
+    [SerializeField] private GameObject audioManager;
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip shotSound;
+
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -19,10 +23,16 @@ public class PlayerGunshot : MonoBehaviour
 
             Vector3 shotStartPosition = transform.position +  new Vector3(0, 0.5f, 0) + direction * shotDistance; // Calcula la posición de inicio del proyectil
 
+            
+
             GameObject shot = GunShotsPlayer.Instance.RequestShot(); // Solicita una bala del pool
 
+
+            
             if (shot != null)
             {
+                audio.loop = false;
+                audio.PlayOneShot(shotSound);
 
                 shot.transform.position = shotStartPosition; // Establece la posición inicial de la bala
                 Rigidbody2D shotRb = shot.GetComponent<Rigidbody2D>(); // Configura la dirección del proyectil

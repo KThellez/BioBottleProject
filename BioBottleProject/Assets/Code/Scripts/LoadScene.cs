@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad;
+    [SerializeField] private int sceneToLoad;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneToLoad); 
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + sceneToLoad);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour{
 
     private Animator bossAnimator;
-    [HideInInspector] public Rigidbody2D bossRigid;
+    public Rigidbody2D bossRigid;
     public Transform playerPosition;
 
     bool isLookingRight = true;
@@ -14,18 +14,23 @@ public class Boss : MonoBehaviour{
     [Header("Healt")]
     [SerializeField] private float healt;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] GameObject winCanvas;
 
     [Header("Attack")]
     [SerializeField] private Transform attackController;
     [SerializeField] private float attackRadious;
-    [SerializeField] private float attackDamage;
+    private Player player;
 
 
     private void Start(){
+
         bossAnimator = GetComponent<Animator>();
         bossRigid = GetComponent<Rigidbody2D>();
         healthBar.InitializeHealthBar(healt);
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = FindObjectOfType<Player>();
+
+        winCanvas.SetActive(false);
     }
 
     private void Update(){
@@ -41,15 +46,14 @@ public class Boss : MonoBehaviour{
         healthBar.ChangeCurrentHealt(healt);
 
         if (healt <= 0){
-            bossAnimator.SetTrigger("Death");
+            Death();
         }
     }
 
     void Death(){
-
-        
+        winCanvas.SetActive(true);
     }
-
+    
     public void LookAtPlayer(){
 
         if((playerPosition.position.x > transform.position.x && !isLookingRight) || (playerPosition.position.x < transform.position.x && isLookingRight)){
@@ -65,7 +69,7 @@ public class Boss : MonoBehaviour{
 
         foreach(Collider2D collision in objects){
             if (collision.CompareTag("Player")){
-                Destroy(collision.gameObject);
+                player.Death();
             }
         }
     }

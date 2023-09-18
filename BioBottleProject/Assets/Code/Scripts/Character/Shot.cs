@@ -10,14 +10,12 @@ public class Shot : MonoBehaviour
 
     private void Start()
     {
-        if (shotRb == null){shotRb = GetComponent<Rigidbody2D>();}
+        if (shotRb == null) { shotRb = GetComponent<Rigidbody2D>(); }
         //shotRb.velocity = shotRb.velocity.normalized * shotSpeed;
     }
 
-    private void OnCollisionEnter2D()
-    {
+    private void OnCollisionEnter2D(){
         gameObject.SetActive(false);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

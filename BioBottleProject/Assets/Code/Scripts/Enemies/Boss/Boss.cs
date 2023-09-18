@@ -7,8 +7,9 @@ public class Boss : MonoBehaviour{
     private Animator bossAnimator;
     public Rigidbody2D bossRigid;
     public Transform playerPosition;
+    public float moveSpeed = 2.0f;
 
-    bool isLookingRight = true;
+    [SerializeField] bool isLookingRight = true;
     private float distancePlayer;
 
     [Header("Healt")]
@@ -27,8 +28,9 @@ public class Boss : MonoBehaviour{
         bossAnimator = GetComponent<Animator>();
         bossRigid = GetComponent<Rigidbody2D>();
         healthBar.InitializeHealthBar(healt);
-        playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        player = FindObjectOfType<Player>();
+        healthBar.InitializeHealthBar(healt);
+        //playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //player = FindObjectOfType<Player>();
 
         winCanvas.SetActive(false);
     }
@@ -55,7 +57,7 @@ public class Boss : MonoBehaviour{
     }
     
     public void LookAtPlayer(){
-
+        
         if((playerPosition.position.x > transform.position.x && !isLookingRight) || (playerPosition.position.x < transform.position.x && isLookingRight)){
 
             isLookingRight = !isLookingRight;
@@ -64,12 +66,13 @@ public class Boss : MonoBehaviour{
     }
 
     public void Attack(){
-
+        playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = FindObjectOfType<Player>();
         Collider2D[] objects = Physics2D.OverlapCircleAll(attackController.position, attackRadious);
 
         foreach(Collider2D collision in objects){
             if (collision.CompareTag("Player")){
-                player.Death();
+                player.DeathByBoss();
             }
         }
     }

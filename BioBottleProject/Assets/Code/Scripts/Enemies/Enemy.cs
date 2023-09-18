@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ;
-            collision.GetComponent<Player>().Death(); 
+            collision.GetComponent<Player>().DeathByEnemy(); 
         }
 
     }
